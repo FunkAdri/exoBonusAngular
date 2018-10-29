@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app>
+<head>
+  <meta charset="utf-8" />
+  <title>ex1 bonus</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<!-- On met en place le formulaire -->
+  <form action="index.html" name="form">
+    <label for="email">Adresse Mail : </label>
+    <!-- On dit avec ng-pattern qu'il faut @ pour que ça marche et on ajoute un required pour signifié qu'il le faut pour que
+    ça marche ng-model = lié l'input au angularjs -->
+    <input type="text" name="email" ng-pattern="/@/" ng-model="email" id="email" required />
+    <!-- Pour le ng-show, ça se lit : dans le formulaire email si c'est valid alors ... -->
+    <div ng-show="form.email.$valid" class="valid">C'est bon</div>
+    <!-- Ça se lit : dans le formulaire email si l'utilisateur à intéragie mais à rien mit alors ... dirty = fait prendre en
+    compte le fait que ça à changé (suite à un espace ou autre) -->
+    <div ng-show="form.email.$dirty&&form.email.$error.required" class="error">Veuillez remplir l'espace requis</div>
+    <!-- sinon c'est une erreur sur le requi alors ... -->
+    <div ng-show="form.email.$dirty&&form.email.$error.pattern" class="error">Mauvais format</div>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <!-- <script type="text/javascript" src="js.js"></script> -->
+</body>
+</html>
